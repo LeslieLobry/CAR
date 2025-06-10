@@ -40,11 +40,11 @@ form.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-      message.textContent = "Merci ! Ton email a été enregistré.";
+      message.textContent = "Merci ! votre email a été enregistré.";
       form.reset();
     } else {
       const data = await response.json();
-      message.textContent = `Erreur : ${data.error || 'Impossible d\'enregistrer ton email.'}`;
+      message.textContent = `Erreur : ${data.error || 'Impossible d\'enregistrer votre email.'}`;
     }
   } catch (error) {
     message.textContent = "Erreur réseau, merci de réessayer.";
