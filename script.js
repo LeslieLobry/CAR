@@ -20,3 +20,33 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+// Gestion du formulaire
+
+const form = document.getElementById('emailForm');
+const message = document.getElementById('message');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  message.textContent = 'Envoi en cours...';
+
+  const email = form.email.value;
+
+  try {
+    const response = await fetch('/api/inscription-ouverture', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+
+    if (response.ok) {
+      message.textContent = "Merci ! Ton email a été enregistré.";
+      form.reset();
+    } else {
+      const data = await response.json();
+      message.textContent = `Erreur : ${data.error || 'Impossible d\'enregistrer ton email.'}`;
+    }
+  } catch (error) {
+    message.textContent = "Erreur réseau, merci de réessayer.";
+  }
+});
