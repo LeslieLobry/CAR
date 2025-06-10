@@ -1,14 +1,10 @@
 {
   "name": "car",
   "version": "1.0.0",
-  "main": "server.js",
   "scripts": {
-  "start": "node --openssl-legacy-provider server.js"
-},
+    "vercel-build": "echo Build step can go here"
+  },
   "dependencies": {
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "googleapis": "^150.0.1",
-    "body-parser": "^1.20.2"
+    "googleapis": "^150.0.1"
   }
 }
